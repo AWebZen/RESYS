@@ -20,3 +20,11 @@ print(rowSums(gr1_adj))
 
 #Verification
 degrees = degree(graph1) 
+
+g2 <- graph( edges=c(1,2, 2,3, 3, 1,1,4), n=10 )
+gr2_adj <- as.matrix(as_adj(g2),10,10) #matrice d'adjacence, ligne = entree, colonne = sortie
+print(rowSums(gr2_adj))
+print(colSums(gr2_adj))
+
+print(degree(g2, mode = c("out")))
+print(degree(g2, mode = c("in")))

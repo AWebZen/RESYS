@@ -13,9 +13,9 @@
 #install.packages("igraph")
 library(igraph)
 
-graph1 <- graph(edges = c(4,7,4,8,8,7,7,2,2,8,2,6,6,1,1,3,1,10,10,5), n=10, directed=F )
+graph1 <- graph(edges = c(4,7,4,8,8,7,7,2,2,8,2,6,6,1,1,3,1,10,10,5,1,11,11,2), n=11, directed=F )
 #gr1_adj <- as_adj(graph1)#matrice d'adjacence, ligne = entree, colonne = sortie
-gr1_adj <- as.matrix(as_adj(graph1),10,10) #matrice d'adjacence, ligne = entree, colonne = sortie
+gr1_adj <- as.matrix(as_adj(graph1),11,11) #matrice d'adjacence, ligne = entree, colonne = sortie
 print(rowSums(gr1_adj))
 print(colSums(gr1_adj))
 
@@ -175,33 +175,80 @@ Betweenness=function(tr_all)
 }
 
 
-#import the sample_weighted_adjmatrix file from bottom of the page:
-dat=read.csv(file.choose(),header=TRUE,row.names=1,check.names=FALSE) # read .csv file
-m=as.matrix(dat)
-net=graph.adjacency(m,mode="undirected",weighted=TRUE,diag=FALSE) #here is the first difference from the previous plot: we designate weighted=TRUE
-
+# #import the sample_weighted_adjmatrix file from bottom of the page:
+# dat=read.csv(file.choose(),header=TRUE,row.names=1,check.names=FALSE) # read .csv file
+# m=as.matrix(dat)
+# net=graph.adjacency(m,mode="undirected",weighted=TRUE,diag=FALSE) #here is the first difference from the previous plot: we designate weighted=TRUE
+D=t(matrix(c(0,3,8,Inf,-4,Inf,0,Inf,1,7,Inf,4,0,Inf,Inf,2,Inf,-5,0,Inf,Inf,Inf,Inf,6,0),5,5))
 #Pour oriente ou non, on regarde les degrees out
 floyd_warshall = function(gr_adj)
 {
+  gr2_adj = gr_adj
   V = dim(gr_adj)[1]
   gr_adj[gr_adj == 0] = Inf
   diag(gr_adj) = 0
   Next = t(matrix(1:V, V, V))
-  print(dim(Next))
-  print(Next)
-  for(k in 1:V)
+  Next[gr_adj == 0] = NA
+  Next[gr_adj == Inf] = NA
+  Compt = matrix(0,V,V)
+  for(k in 1:V) #noeud obligatoire du chemin
   {
-    for(i in 1:V)
+    for(i in 1:V) #source
     {
-      for(j in 1:V)
+      for(j in 1:V) #arrivee
       {
         if (gr_adj[i,j] > gr_adj[i,k]+gr_adj[k,j])
         {
           gr_adj[i,j] = gr_adj[i,k]+gr_adj[k,j]
-          Next[i,j] = Next[i,k]
+          Next[i,j] = Next[i,k] #update si chemin passant par k entre i et j est plus court que celui qu'on a deja
+          if (i != j)
+          {
+            Compt[i,j] = 1
+          }
+        }
+        else if (k!=i && k !=j && i != j && gr_adj[i,j] != Inf && gr_adj[i,j] == gr_adj[i,k]+gr_adj[k,j])
+        {
+          Compt[i,j] = Compt[i,j] + 1
         }
       }
     }
   }
-  return(list(gr_adj,Next))
+  Compt[which(gr_adj == gr2_adj)] = Compt[which(gr_adj == gr2_adj)] + 1
+  diag(Compt) = 0
+  return(list(gr_adj,Next, Compt))
 }
+
+traceback_fw = function(Next, compt)
+{
+  chemins = list()
+  V = dim(Next)[1]
+  for (u in 1:V)
+  {
+    for (v in 1:V)
+    {
+      if(anyNA(Next[u,v]))
+        chemins[[length(chemins) +1]] = list()
+      else
+      {
+        local = c(u)
+        w = u
+        while(w!=v)
+        {
+          if (compt[w,v] > compt[u,v])
+          {
+            compt[u,v] = compt[w,v]
+          }
+          local=c(local,Next[w,v])
+          w = Next[w,v]
+        }
+        print(local)
+        chemins[[length(chemins) +1]] = local
+      }
+    }
+  }
+  return (list(chemins, compt))
+}
+
+
+##### + long + court chemin
+##### ENLEVER COMPT

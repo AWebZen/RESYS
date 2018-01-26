@@ -292,7 +292,6 @@ longest_shortest_path_fw = function(distance)
   return (max(distance))
 }
 
-
 PlCC=function(gr_adj)
 {
     dist=gr_adj

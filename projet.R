@@ -11,14 +11,14 @@ option_list = list(
               help="Network file, required.", metavar="character"),
   make_option(c("-e", "--extension"), type="character", default=NULL, 
               help='Required. File format, choose one of the following : "edgelist", "pajek", "ncol", "lgl", "graphml",
-  "dimacs", "graphdb", "gml", "dl".', metavar="character"),
+              "dimacs", "graphdb", "gml", "dl".', metavar="character"),
   # make_option(c("-n", "--vertices"), default=0, type = "integer", 
   #             help="Number of network vertices. Ignored if not higher than the largest integer in file."),
   # make_option(c("-d", "--directed"), action="store_true", default=FALSE,
   #             help="When option is present, network is directed. /!\ if not present, network will be considered undirected!"),
   make_option(c("-t", "--traceback"), action="store_true", default=FALSE,
               help="When option is present, outputs the BFS and Floyd-Warshall tracebacks : one of the shortest paths between every 2 vertices.")
-);
+  );
 
 opt_parser = OptionParser(option_list=option_list);
 opt = parse_args(opt_parser);
@@ -96,7 +96,7 @@ clustering_coeff = function(gr, symetric)
     # print(paste("aretes voisins", aretes.voisins))
     cl = c(cl, aretes.voisins * 2/(deg[node] * (deg[node]-1))) 
   }
-
+  
   # else
   # {
   #   deg = degrees(gr, symetric)[1,]
@@ -294,109 +294,109 @@ longest_shortest_path_fw = function(distance)
 
 PlCC=function(gr_adj)
 {
-    dist=gr_adj
-    dist[which(dist == 0)] = Inf
-    diag(dist)=0
-    d=dim(dist)[1]
-    k=1
-    PCC=list()
+  dist=gr_adj
+  dist[which(dist == 0)] = Inf
+  diag(dist)=0
+  d=dim(dist)[1]
+  k=1
+  PCC=list()
+  pcc=list()
+  for (x in 1:d)
+  {
+    for(y in 1:d)
+    {
+      if (dist[x,y]==k )
+      {
+        pcc=rbind(pcc,c(x,y))
+      }
+    }
+  }
+  PCC[[length(PCC)+1]]=pcc
+  while(length(which(dist == Inf))!=0 && length(pcc)!=0)
+  {
     pcc=list()
-    for (x in 1:d)
+    for (u in 1:d)
     {
-        for(y in 1:d)
+      for (v in 1:d)
+      {
+        if (dist[u,v]==k)
         {
-            if (dist[x,y]==k )
+          for (w in c(1:d))
+          {
+            if (dist[v,w]==1 && w!=u && w!=v)
             {
-                pcc=rbind(pcc,c(x,y))
-            }
-        }
-    }
-    PCC[[length(PCC)+1]]=pcc
-    while(length(which(dist == Inf))!=0 && length(pcc)!=0)
-    {
-        pcc=list()
-        for (u in 1:d)
-        {
-            for (v in 1:d)
-            {
-                if (dist[u,v]==k)
+              for (i in 1:dim(PCC[[k]])[1])
+              {
+                if ((PCC[[k]][i,1])==u  && (PCC[[k]][i,length(PCC[[k]][i,])])==v && w%in%PCC[[k]][i,]==FALSE)
                 {
-                    for (w in c(1:d))
-                    {
-                        if (dist[v,w]==1 && w!=u && w!=v)
-                        {
-                            for (i in 1:dim(PCC[[k]])[1])
-                            {
-                                if ((PCC[[k]][i,1])==u  && (PCC[[k]][i,length(PCC[[k]][i,])])==v && w%in%PCC[[k]][i,]==FALSE)
-                                {
-                                    if (dist[u,w]==k+1|dist[u,w]==Inf)
-                                    {
-                                        pcc=rbind(pcc,c(PCC[[k]][i,],w))
-                                        dist[u,w]=k+1
-                                    }
-                                }
-                            }
-                        }
-                    }
+                  if (dist[u,w]==k+1|dist[u,w]==Inf)
+                  {
+                    pcc=rbind(pcc,c(PCC[[k]][i,],w))
+                    dist[u,w]=k+1
+                  }
                 }
+              }
             }
+          }
         }
-        if (length(pcc)!=0)
-        {
-            PCC[[length(PCC)+1]]=pcc
-        }
-        k=k+1
+      }
     }
-    return(list(PCC,dist))
+    if (length(pcc)!=0)
+    {
+      PCC[[length(PCC)+1]]=pcc
+    }
+    k=k+1
+  }
+  return(list(PCC,dist))
 }
 
 
 Betweenness=function(List_chemins,dist,n,Sym=TRUE)
 {
-    B=list()
-    for (x in 1:n)
-    {
+  B=list()
+  for (x in 1:n)
+  {
     B[length(B)+1]=list(matrix(0,n,n))
-    }
-    Tot=matrix(0,n,n)
-    for (i in 2:length(List_chemins[[1]]))
+  }
+  Tot=matrix(0,n,n)
+  for (i in 2:length(List_chemins[[1]]))
+  {
+    for (j in 1:dim(List_chemins[[1]][[i]])[1])
     {
-        for (j in 1:dim(List_chemins[[1]][[i]])[1])
-        {
-            for (x in 3:length(List_chemins[[1]][[i]][j,])-1)
-            {
-                v=as.numeric(List_chemins[[1]][[i]][j,x])
-                s=as.numeric(List_chemins[[1]][[i]][j,1])
-                t=as.numeric(List_chemins[[1]][[i]][j,length(List_chemins[[1]][[i]][j,])])
-                B[[v]][s,t]=B[[v]][s,t]+1
-            }
-        }
+      for (x in 3:length(List_chemins[[1]][[i]][j,])-1)
+      {
+        v=as.numeric(List_chemins[[1]][[i]][j,x])
+        s=as.numeric(List_chemins[[1]][[i]][j,1])
+        t=as.numeric(List_chemins[[1]][[i]][j,length(List_chemins[[1]][[i]][j,])])
+        B[[v]][s,t]=B[[v]][s,t]+1
+      }
     }
-    for (i in 1:length(B))
+  }
+  for (i in 1:length(B))
+  {
+    Tot=Tot+(B[[i]])
+  }
+  for (i in 1:n)
+  {
+    for (j in 1:n)
     {
-        Tot=Tot+(B[[i]])
+      Tot[i,j]=Tot[i,j]/(dist[[1]][i,j]-1)
     }
+  }
+  b=list()
+  for (k in 1:n)
+  {
+    B[[k]]=B[[k]]/Tot
     for (i in 1:n)
     {
-        for (j in 1:n)
-        {
-            Tot[i,j]=Tot[i,j]/(dist[[1]][i,j]-1)
-        }
+      B[[k]][i,][which(is.na(B[[k]][i,]))]=0
     }
-    b=list()
-    for (k in 1:n)
-    {
-        B[[k]]=B[[k]]/Tot
-        for (i in 1:n)
-        {
-            B[[k]][i,][which(is.na(B[[k]][i,]))]=0
-        }
-        if (Sym)
-        b=rbind(b,sum(B[[k]])/2)
-        else
-        b=rbind(b,sum(B[[k]]))
-    }
-    return(b)
+    if (Sym)
+      b=rbind(b,sum(B[[k]])/2)
+    else
+      b=rbind(b,sum(B[[k]]))
+  }
+  return(b)
 }
 
 
@@ -511,7 +511,7 @@ main = function(file, tr, extension)
     #Betweenness
     between = Betweenness(sh_path_mais[1],sh_path_mais[2],dim(gr_Adj)[1])
     
-    df = as.data.frame(t(rbind(graph_degree, cl_coef, between)), row.names = paste("Node", 1:dim(gr_Adj)[1]))
+    df = as.data.frame(t(rbind(graph_degree, cl_coef, as.numeric(between))), row.names = paste("Node", 1:dim(gr_Adj)[1]))
     colnames(df) =c("Degree", "Local_transitivity", "Betweenness")
   }
   else
@@ -519,14 +519,13 @@ main = function(file, tr, extension)
     df = as.data.frame(t(rbind(graph_degree, cl_coef)), row.names = paste("Node", 1:dim(gr_Adj)[1]))
     colnames(df) =c("Degree", "Local_transitivity")
   }
-  
   #Shortest path via Floyd-Warshall
   sh_path_fw = floyd_warshall(gr_Adj)
   tr_fw = traceback_fw(sh_path_fw[[2]])
   longest_sh_path_fw = longest_shortest_path_fw(sh_path_fw[[1]])
   
   #Output
-
+  
   write.table(df, file = "output.txt", quote = FALSE, sep = "\t")
   if (! is_weighted)
   {
@@ -563,4 +562,3 @@ main = function(file, tr, extension)
 
 # MAIN
 main(opt$file, opt$traceback, opt$extension)
-

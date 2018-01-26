@@ -348,12 +348,25 @@ output_traceback_bfs = function(trace, fichier)
 #Output du traceback de F-W
 output_traceback_fw = function(trace, fichier)
 {
-  write(paste("#Floyd-Warshall : one of the shortest paths for each pair of vertexes"), append = TRUE, file = fichier)
+  write(paste("#Floyd-Warshall : one of the shortest paths for each pair of vertexes"), append = FALSE, file = fichier)
   for (i in 1:length(trace))
   {
     if (length(trace[[i]]) > 1)
     {
       write(trace[[i]], sep = "\t",append = TRUE, file =fichier, ncolumns = length(trace[[i]]))
+    }
+  }
+}
+
+#Output du traceback de l'algorithme maison
+output_traceback_mais = function(trace, fichier)
+{
+  write(paste("#Algorithme maison : all of the shortest paths possible for each pair of vertexes"), append = TRUE, file = fichier)
+  for (i in 1:(length(trace)[1])) #tailles
+  {
+    for (j in 1:(dim(trace[[i]])[1])) #lignes
+    {
+      write(unlist(trace[[i]][j,]), sep = "\t", append = TRUE, file =fichier, ncolumns = length(unlist(trace[[i]][j,])))
     }
   }
 }
@@ -383,19 +396,30 @@ main = function(file, tr, extension)
   {
     sh_path_bfs = all_BFS(gr_Adj)
     longest_sh_path_bfs = longest_shortest_path_BFS(sh_path_bfs[[1]])
-    print(sh_path_bfs)
+    
+    #Shortest path algorithme maison
+    sh_path_mais = PlCC(gr_Adj)
+    longest_sh_path_mais = longest_shortest_path_BFS(sh_path_mais[[2]])
+    
+    #Betweenness
+    between = Betweenness(sh_path_mais[1],sh_path_mais[2],dim(gr_Adj)[1])
+    
+    df = as.data.frame(t(rbind(graph_degree, cl_coef, between)), row.names = paste("Node", 1:dim(gr_Adj)[1]))
+    colnames(df) =c("Degree", "Local_transitivity", "Betweenness")
+  }
+  else
+  {
+    df = as.data.frame(t(rbind(graph_degree, cl_coef)), row.names = paste("Node", 1:dim(gr_Adj)[1]))
+    colnames(df) =c("Degree", "Local_transitivity")
   }
   
   #Shortest path via Floyd-Warshall
   sh_path_fw = floyd_warshall(gr_Adj)
   tr_fw = traceback_fw(sh_path_fw[[2]])
   longest_sh_path_fw = longest_shortest_path_fw(sh_path_fw[[1]])
-  print(sh_path_fw)
-  print(tr_fw)
   
   #Output
-  df = as.data.frame(t(rbind(graph_degree, cl_coef)), row.names = paste("Node", 1:dim(gr_Adj)[1]))
-  colnames(df) =c("Degree", "Local_transitivity")
+
   write.table(df, file = "output.txt", quote = FALSE, sep = "\t")
   if (! is_weighted)
   {
@@ -405,6 +429,13 @@ main = function(file, tr, extension)
     rownames(matr) = paste("Node", 1:dim(gr_Adj)[1])
     write.table(matr,file ="output.txt", append = TRUE, quote = FALSE, sep = "\t")
     write(paste("#BFS Longest shortest path", longest_sh_path_bfs), sep = "\t", file ="output.txt", append = TRUE)
+    
+    write(c("#Algo maison Shortest distance matrix"), file ="output.txt", append = TRUE)
+    matr = sh_path_mais[[2]]
+    colnames(matr) = paste("Node", 1:dim(gr_Adj)[1])
+    rownames(matr) = paste("Node", 1:dim(gr_Adj)[1])
+    write.table(matr,file ="output.txt", append = TRUE, quote = FALSE, sep = "\t")
+    write(paste("#Algo maison Longest shortest path", longest_sh_path_mais), sep = "\t", file ="output.txt", append = TRUE)
   }
   write(c("#Floyd-Warshall Shortest distance matrix"), file ="output.txt", append = TRUE)
   matr = sh_path_fw[[1]]
@@ -414,11 +445,12 @@ main = function(file, tr, extension)
   write(paste("#Floyd-Warshall Longest shortest path", longest_sh_path_fw), sep = "\t", file ="output.txt", append = TRUE)
   if (tr)
   {
+    output_traceback_fw(tr_fw, "output_traceback.txt")
     if (! is_weighted)
     {
       output_traceback_bfs(sh_path_bfs[[3]], "output_traceback.txt")
+      output_traceback_mais(sh_path_mais[[1]], "output_traceback.txt")
     }
-    output_traceback_fw(tr_fw, "output_traceback.txt")
   }
 }
 

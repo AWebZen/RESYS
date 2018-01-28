@@ -12,10 +12,6 @@ option_list = list(
   make_option(c("-e", "--extension"), type="character", default=NULL, 
               help='Required. File format, choose one of the following : "edgelist", "pajek", "ncol", "lgl", "graphml",
               "dimacs", "graphdb", "gml", "dl".', metavar="character"),
-  # make_option(c("-n", "--vertices"), default=0, type = "integer", 
-  #             help="Number of network vertices. Ignored if not higher than the largest integer in file."),
-  # make_option(c("-d", "--directed"), action="store_true", default=FALSE,
-  #             help="When option is present, network is directed. /!\ if not present, network will be considered undirected!"),
   make_option(c("-t", "--traceback"), action="store_true", default=FALSE,
               help="When option is present, outputs the BFS and Floyd-Warshall tracebacks : one of the shortest paths between every 2 vertices.")
   );
@@ -40,7 +36,7 @@ if ( ! opt$extension %in% formats)
 
 
 
-#Takes a graph and a boolean as input and gives the degree, and if True, the degree in/out.
+# Prend un graphe et un booleen et donne le degre. Si FALSE (oriente), donne les degres in/out ainsi que la somme des deux.
 degrees = function(gr, symetric, gr_adj = "")
 {
   if (! is.matrix(gr_adj))
@@ -57,7 +53,7 @@ degrees = function(gr, symetric, gr_adj = "")
   }
 }
 
-#Degree distribution
+#Distribution des degres
 degree_distrib = function(degree_gr)
 {
   png("degree_distribution.png") #Caution! Replaces image if done multiple times
@@ -73,7 +69,7 @@ undirect_graph = function(gr_adj)
   return(undir)
 }
 
-#Local clustering coefficient
+#Local clustering coefficient. Prend un graphe et un booleen qui dit si la matrice d'adjacence est symmetrique ou pas (non oriente ou pas)
 clustering_coeff = function(gr, symetric)
 {
   gr_adj <- as.matrix(as_adj(gr))
@@ -88,40 +84,21 @@ clustering_coeff = function(gr, symetric)
   deg = degrees(gr, TRUE, gr_adj)
   for (node in V)
   {
-    # print(paste("node", node))
     node.voisins = which(gr_adj[node,] != 0)
-    # print (paste("voisins", node.voisins))
     aretes.voisins = sum(gr_adj[node.voisins, which(gr_adj[node,] != 0)])/2 # matrice d'adjacence est symetrique donc il faut diviser par 2 le resultat
-    # print (gr_adj[node.voisins, which(gr_adj[node,] != 0)])
-    # print(paste("aretes voisins", aretes.voisins))
     cl = c(cl, aretes.voisins * 2/(deg[node] * (deg[node]-1))) 
   }
-  
-  # else
-  # {
-  #   deg = degrees(gr, symetric)[1,]
-  #   for (node in V)
-  #   {
-  #     print(node)
-  #       node.voisins = which(gr_adj[node,] != 0| gr_adj[,node] != 0)
-  #       print (paste("voisins", node.voisins))
-  #       aretes.voisins = sum(gr_adj[node.voisins, which(gr_adj[node,] != 0 | gr_adj[,node] != 0)]) # matrice d'adjacence est non symetrique
-  #       print (gr_adj[node.voisins, which(gr_adj[node,] != 0 | gr_adj[,node] != 0)])
-  #       print(paste("aretes voisins", aretes.voisins))
-  #       cl = c(cl, aretes.voisins/(deg[node] * (deg[node]-1)))
-  #   }
-  # }
-  retour <- cl #c(cl, mean(cl, na.rm = TRUE))
-  # names(retour) <- c(V, "global")
+  retour <- cl 
   return (retour)
 }
 
-#Pour oriente ou non, on regarde les degrees out. Pour graphes non ponderes (poids de 1 si arc).
+#Breadth First Algorithm. Pour oriente ou non ; on regarde les degrees out. Pour graphes non ponderes (poids de 1 si arc). 
+#Prend une matrice d'adjacence et un noeud source.
 BFS = function(gr_adj, s)
 {
   V = dim(gr_adj)[1]
   dist=(rep(Inf, V))
-  dist[s]=0
+  dist[s] = 0
   prev=(rep(-1,V))
   Q=c(s)
   while(length(Q)!=0)
@@ -141,7 +118,7 @@ BFS = function(gr_adj, s)
   return(rbind(dist, prev))
 }
 
-#Donne un des plus courts chemins entre 2 noeuds
+#Donne un des plus courts chemins entre la source et tous les autres noeuds, a partir de l'output du BFS.
 traceback_BFS=function(dist,prev)
 {
   chemins = list()
@@ -160,7 +137,8 @@ traceback_BFS=function(dist,prev)
   return(chemins)
 }
 
-
+#Applique BFS et son traceback a tous les points.
+#Prend une matrice d'adjacence.
 all_BFS=function(gr_adj)
 {
   dist_all = c()
@@ -177,6 +155,7 @@ all_BFS=function(gr_adj)
   return(list(dist_all, prev_all, tr_all))
 }
 
+#Donne le plus long plus court chemin trouve par BFS.
 #distance_all = 1er element de la liste retournee par all_BFS
 longest_shortest_path_BFS = function(distance_all)
 {
@@ -186,7 +165,9 @@ longest_shortest_path_BFS = function(distance_all)
 }
 
 
-#Pour oriente ou non, pondere ou non
+#Applique l'algorithme Floyd-Warshall pour calculer les plus courts chemins par paires de chemin.
+#Pour oriente ou non, pondere ou non.
+#Prend une matrice d'adjacence
 floyd_warshall = function(gr_adj)
 {
   gr2_adj = gr_adj
@@ -197,7 +178,7 @@ floyd_warshall = function(gr_adj)
   Next[gr_adj == 0] = NA
   Next[gr_adj == Inf] = NA
   # Compt = matrix(0,V,V)
-  for(k in 1:V) #noeud obligatoire du chemin
+  for(k in 1:V) #noeud intermediaire obligatoire
   {
     for(i in 1:V) #source
     {
@@ -207,25 +188,15 @@ floyd_warshall = function(gr_adj)
         {
           gr_adj[i,j] = gr_adj[i,k]+gr_adj[k,j]
           Next[i,j] = Next[i,k] #update si chemin passant par k entre i et j est plus court que celui qu'on a deja
-          # if (i != j)
-          # {
-          #   Compt[i,j] = 1
-          # }
         }
-        # else if (k!=i && k !=j && i != j && gr_adj[i,j] != Inf && gr_adj[i,j] == gr_adj[i,k]+gr_adj[k,j])
-        # {
-        #   Compt[i,j] = Compt[i,j] + 1
-        # }
       }
     }
   }
-  # Compt[which(gr_adj == gr2_adj)] = Compt[which(gr_adj == gr2_adj)] + 1
-  # diag(Compt) = 0
-  # return(list(gr_adj,Next, Compt))
   return(list(gr_adj,Next))
 }
 
 
+# Fait le traceback de l'algorithme Floyd-Warshall. Donne les plus courts chemins entre chaque paire de points.
 # Next : 2e element de la liste rendue par floyd_warshall()
 traceback_fw = function(Next)
 {
@@ -246,7 +217,6 @@ traceback_fw = function(Next)
           local=c(local,Next[w,v])
           w = Next[w,v]
         }
-        # print(local)
         chemins[[length(chemins) +1]] = local
       }
     }
@@ -254,37 +224,8 @@ traceback_fw = function(Next)
   return (chemins)
 }
 
-# traceback_fw = function(Next, compt)
-# {
-#   chemins = list()
-#   V = dim(Next)[1]
-#   for (u in 1:V)
-#   {
-#     for (v in 1:V)
-#     {
-#       if(anyNA(Next[u,v]))
-#         chemins[[length(chemins) +1]] = list()
-#       else
-#       {
-#         local = c(u)
-#         w = u
-#         while(w!=v)
-#         {
-#           if (compt[w,v] > compt[u,v])
-#           {
-#             compt[u,v] = compt[w,v]
-#           }
-#           local=c(local,Next[w,v])
-#           w = Next[w,v]
-#         }
-#         print(local)
-#         chemins[[length(chemins) +1]] = local
-#       }
-#     }
-#   }
-#   return (list(chemins, compt))
-# }
 
+# Donne le plus long plus court chemin entre deux points trouves par l'algorithme Floyd-Warshall.
 # Next : 1er element de la liste rendue par floyd_warshall()
 longest_shortest_path_fw = function(distance)
 {
@@ -292,6 +233,8 @@ longest_shortest_path_fw = function(distance)
   return (max(distance))
 }
 
+#Plus court chemin, trouve tous les plus courts chemins entre deux points, meme les ex-aequo. Algorithme maison.
+#Prend une matrice d'adjacence. Graphes non ponderes.
 PlCC=function(gr_adj)
 {
   dist=gr_adj
@@ -350,7 +293,8 @@ PlCC=function(gr_adj)
   return(list(PCC,dist))
 }
 
-
+#Calcul de la betweenness.
+#Prend l'output de PlCC, le nombre de noeuds et un booleen disant si la matrice est symetrique ou non.
 Betweenness=function(List_chemins,dist,n,Sym=TRUE)
 {
   B=list()
@@ -400,11 +344,10 @@ Betweenness=function(List_chemins,dist,n,Sym=TRUE)
 }
 
 
-#Tests varies des fonctions, verifications par igraph
+#Tests varies des fonctions, quelques verifications par igraph
 tests_varies = function()
 {
   graph1 <- graph(edges = c(4,7,4,8,8,7,7,2,2,8,2,6,6,1,1,3,1,10,10,5,1,11,11,2), n=11, directed=F )
-  #gr1_adj <- as_adj(graph1)#matrice d'adjacence, ligne = entree, colonne = sortie
   gr1_adj <- as.matrix(as_adj(graph1),11,11) #matrice d'adjacence, ligne = entree, colonne = sortie
   print(rowSums(gr1_adj))
   print(colSums(gr1_adj))
@@ -422,7 +365,6 @@ tests_varies = function()
   print(degree(g2, mode = c("in")))
   print(degree(g2))
   
-  
   #Verifier si graphe oriente ou pas
   symetric = isSymmetric.matrix(gr1_adj)
   
@@ -436,7 +378,9 @@ tests_varies = function()
   Res_all = all_BFS(gr1_adj)
 }
 
-#Output du traceback de BFS
+
+#Ecrit dans un fichier le traceback de BFS
+#Prend le traceback et le nom du fichier.
 output_traceback_bfs = function(trace, fichier)
 {
   write(paste("#BFS Traceback : one of the shortest paths for each pair of vertexes"), append = TRUE, file = fichier)
@@ -452,7 +396,8 @@ output_traceback_bfs = function(trace, fichier)
   }
 }
 
-#Output du traceback de F-W
+#Ecrit dans un fichier le traceback de F-W
+#Prend le traceback et le nom du fichier.
 output_traceback_fw = function(trace, fichier)
 {
   write(paste("#Floyd-Warshall : one of the shortest paths for each pair of vertexes"), append = FALSE, file = fichier)
@@ -465,7 +410,8 @@ output_traceback_fw = function(trace, fichier)
   }
 }
 
-#Output du traceback de l'algorithme maison
+#Ecrit dans un fichier le traceback de l'algorithme maison
+#Prend le traceback et le nom du fichier
 output_traceback_mais = function(trace, fichier)
 {
   write(paste("#Algorithme maison : all of the shortest paths possible for each pair of vertexes"), append = TRUE, file = fichier)
@@ -478,7 +424,9 @@ output_traceback_mais = function(trace, fichier)
   }
 }
 
-# file : network file
+
+#Main
+#file : fichier du reseau. tr : boolean, si l'on veut un output avec le traceback ou pas. extension : format du fichier du reseau.
 main = function(file, tr, extension)
 {
   #Input graph

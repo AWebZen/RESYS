@@ -457,7 +457,7 @@ main = function(file, tr, extension)
     longest_sh_path_mais = longest_shortest_path_BFS(sh_path_mais[[2]])
     
     #Betweenness
-    between = Betweenness(sh_path_mais[1],sh_path_mais[2],dim(gr_Adj)[1])
+    between = Betweenness(sh_path_mais[1], sh_path_mais[2], dim(gr_Adj)[1], symetric)
     
     df = as.data.frame(t(rbind(graph_degree, cl_coef, as.numeric(between))), row.names = paste("Node", 1:dim(gr_Adj)[1]))
     colnames(df) =c("Degree", "Local_transitivity", "Betweenness")

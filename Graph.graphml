@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns">
+    <key attr.name="SUID" attr.type="long" for="node" id="SUID"/>
+    <key attr.name="shared name" attr.type="string" for="node" id="shared name"/>
+    <key attr.name="name" attr.type="string" for="node" id="name"/>
+    <key attr.name="selected" attr.type="boolean" for="node" id="selected"/>
+    <key attr.name="In degree" attr.type="string" for="node" id="In degree"/>
+    <key attr.name="Eccentricity out" attr.type="string" for="node" id="Eccentricity out"/>
+    <key attr.name="Closeness centrality out weighted" attr.type="string" for="node" id="Closeness centrality out weighted"/>
+    <key attr.name="Betweenness weighted" attr.type="string" for="node" id="Betweenness weighted"/>
+    <key attr.name="weight" attr.type="double" for="node" id="weight"/>
+    <key attr.name="Betweenness unweighted" attr.type="string" for="node" id="Betweenness unweighted"/>
+    <key attr.name="Total degree" attr.type="string" for="node" id="Total degree"/>
+    <key attr.name="Closeness centrality in unweighted" attr.type="string" for="node" id="Closeness centrality in unweighted"/>
+    <key attr.name="Local clustering coefficient unweighted" attr.type="string" for="node" id="Local clustering coefficient unweighted"/>
+    <key attr.name="Local clustering coefficient weighted" attr.type="string" for="node" id="Local clustering coefficient weighted"/>
+    <key attr.name="Activates" attr.type="string" for="node" id="Activates"/>
+    <key attr.name="Closeness centrality in weighted" attr.type="string" for="node" id="Closeness centrality in weighted"/>
+    <key attr.name="Out degree" attr.type="string" for="node" id="Out degree"/>
+    <key attr.name="Closeness centrality out unweighted" attr.type="string" for="node" id="Closeness centrality out unweighted"/>
+    <key attr.name="Inhibited" attr.type="string" for="node" id="Inhibited"/>
+    <key attr.name="Entropy unweighted" attr.type="string" for="node" id="Entropy unweighted"/>
+    <key attr.name="Activated" attr.type="string" for="node" id="Activated"/>
+    <key attr.name="Entropy weighted" attr.type="string" for="node" id="Entropy weighted"/>
+    <key attr.name="Inhibits" attr.type="string" for="node" id="Inhibits"/>
+    <key attr.name="Eccentricity in" attr.type="string" for="node" id="Eccentricity in"/>
+    <key attr.name="SUID" attr.type="long" for="edge" id="SUID"/>
+    <key attr.name="shared name" attr.type="string" for="edge" id="shared name"/>
+    <key attr.name="shared interaction" attr.type="string" for="edge" id="shared interaction"/>
+    <key attr.name="name" attr.type="string" for="edge" id="name"/>
+    <key attr.name="selected" attr.type="boolean" for="edge" id="selected"/>
+    <key attr.name="interaction" attr.type="string" for="edge" id="interaction"/>
+    <key attr.name="partialCorrelation" attr.type="double" for="edge" id="partialCorrelation"/>
+    <key attr.name="confidence" attr.type="double" for="edge" id="confidence"/>
+    <key attr.name="edgeType" attr.type="int" for="edge" id="edgeType"/>
+    <key attr.name="weight" attr.type="double" for="edge" id="weight"/>
+    <key attr.name="complexity" attr.type="double" for="edge" id="complexity"/>
+    <key attr.name="upstream" attr.type="string" for="edge" id="upstream"/>
+    <key attr.name="nSamples" attr.type="int" for="edge" id="nSamples"/>
+    <key attr.name="sign" attr.type="string" for="edge" id="sign"/>
+    <key attr.name="targetArrowShape" attr.type="string" for="edge" id="targetArrowShape"/>
+    <key attr.name="sourceArrowShape" attr.type="string" for="edge" id="sourceArrowShape"/>
+    <key attr.name="SUID" attr.type="long" for="graph" id="SUID"/>
+    <key attr.name="shared name" attr.type="string" for="graph" id="shared name"/>
+    <key attr.name="name" attr.type="string" for="graph" id="name"/>
+    <key attr.name="selected" attr.type="boolean" for="graph" id="selected"/>
+    <key attr.name="__Annotations" attr.type="string" for="graph" id="__Annotations"/>
+    <graph edgedefault="directed" id="Cytoscape Web">
+        <node id="73">
+            <data key="SUID">73</data>
+            <data key="shared name">SSD</data>
+            <data key="name">SSD</data>
+            <data key="selected">false</data>
+            <data key="In degree">4</data>
+            <data key="Eccentricity out">3</data>
+            <data key="Closeness centrality out weighted">28.5492315947</data>
+            <data key="Betweenness weighted">28</data>
+            <data key="weight">0.5</data>
+            <data key="Betweenness unweighted">12.366666665</data>
+            <data key="Total degree">8</data>
+            <data key="Closeness centrality in unweighted">0.52380952381</data>
+            <data key="Local clustering coefficient unweighted">0</data>
+            <data key="Local clustering coefficient weighted">0</data>
+            <data key="Activates">2</data>
+            <data key="Closeness centrality in weighted">28.5492315947</data>
+            <data key="Out degree">4</data>
+            <data key="Closeness centrality out unweighted">0.55</data>
+            <data key="Inhibited">2</data>
+            <data key="Entropy unweighted">1</data>
+            <data key="Activated">2</data>
+            <data key="Entropy weighted">0.884235353639</data>
+            <data key="Inhibits">2</data>
+            <data key="Eccentricity in">3</data>
+        </node>
+        <node id="72">
+            <data key="SUID">72</data>
+            <data key="shared name">Ohnolog</data>
+            <data key="name">Ohnolog</data>
+            <data key="selected">false</data>
+            <data key="In degree">2</data>
+            <data key="Eccentricity out">3</data>
+            <data key="Closeness centrality out weighted">28.5492315947</data>
+            <data key="Betweenness weighted">20</data>
+            <data key="weight">0.5</data>
+            <data key="Betweenness unweighted">2.6666666655</data>
+            <data key="Total degree">5</data>
+            <data key="Closeness centrality in unweighted">0.5</data>
+            <data key="Local clustering coefficient unweighted">0.1</data>
+            <data key="Local clustering coefficient weighted">0.303675613294</data>
+            <data key="Activates">2</data>
+            <data key="Closeness centrality in weighted">28.5492315947</data>
+            <data key="Out degree">3</data>
+            <data key="Closeness centrality out unweighted">0.52380952381</data>
+            <data key="Inhibited">1</data>
+            <data key="Entropy unweighted">1</data>
+            <data key="Activated">1</data>
+            <data key="Entropy weighted">0.953606312707</data>
+            <data key="Inhibits">1</data>
+            <data key="Eccentricity in">3</data>
+        </node>
+        <node id="71">
+            <data key="SUID">71</data>
+            <data key="shared name">Haplo.insufficient</data>
+            <data key="name">Haplo.insufficient</data>
+            <data key="selected">false</data>
+            <data key="In degree">3</data>
+            <data key="Eccentricity out">3</data>
+            <data key="Closeness centrality out weighted">24.3069294997</data>
+            <data key="Betweenness weighted">0</data>
+            <data key="weight">0.5</data>
+            <data key="Betweenness unweighted">0.9999999985</data>
+            <data key="Total degree">6</data>
+            <data key="Closeness centrality in unweighted">0.478260869565</data>
+            <data key="Local clustering coefficient unweighted">0.133333333333</data>
+            <data key="Local clustering coefficient weighted">0.426657918138</data>
+            <data key="Activates">3</data>
+            <data key="Closeness centrality in weighted">24.3069294997</data>
+            <data key="Out degree">3</data>
+            <data key="Closeness centrality out unweighted">0.478260869565</data>
+            <data key="Inhibited">0</data>
+            <data key="Entropy unweighted">1</data>
+            <data key="Activated">3</data>
+            <data key="Entropy weighted">0.78108821377</data>
+            <data key="Inhibits">0</data>
+            <data key="Eccentricity in">3</data>
+        </node>
+        <node id="70">
+            <data key="SUID">70</data>
+            <data key="shared name">Expression.level_DISCRET</data>
+            <data key="name">Expression.level_DISCRET</data>
+            <data key="selected">false</data>
+            <data key="In degree">1</data>
+            <data key="Eccentricity out">3</data>
+            <data key="Closeness centrality out weighted">8.16606987425</data>
+            <data key="Betweenness weighted">0</data>
+            <data key="weight">0.5</data>
+            <data key="Betweenness unweighted">0</data>
+            <data key="Total degree">2</data>
+            <data key="Closeness centrality in unweighted">0.407407407407</data>
+            <data key="Local clustering coefficient unweighted">0</data>
+            <data key="Local clustering coefficient weighted">0</data>
+            <data key="Activates">0</data>
+            <data key="Closeness centrality in weighted">8.16050092573</data>
+            <data key="Out degree">1</data>
+            <data key="Closeness centrality out unweighted">0.423076923077</data>
+            <data key="Inhibited">1</data>
+            <data key="Entropy unweighted">1</data>
+            <data key="Activated">0</data>
+            <data key="Entropy weighted">1</data>
+            <data key="Inhibits">1</data>
+            <data key="Eccentricity in">3</data>
+        </node>
+        <node id="69">
+            <data key="SUID">69</data>
+            <data key="shared name">Essential.from.mouse.Knockouts</data>
+            <data key="name">Essential.from.mouse.Knockouts</data>
+            <data key="selected">false</data>
+            <data key="In degree">4</data>
+            <data key="Eccentricity out">2</data>
+            <data key="Closeness centrality out weighted">26.5251663046</data>
+            <data key="Betweenness weighted">18</data>
+            <data key="weight">0.5</data>
+            <data key="Betweenness unweighted">13.9833333283</data>
+            <data key="Total degree">8</data>
+            <data key="Closeness centrality in unweighted">0.611111111111</data>
+            <data key="Local clustering coefficient unweighted">0.0357142857143</data>
+            <data key="Local clustering coefficient weighted">0.0857628525283</data>
+            <data key="Activates">3</data>
+            <data key="Closeness centrality in weighted">26.5251663046</data>
+            <data key="Out degree">4</data>
+            <data key="Closeness centrality out unweighted">0.611111111111</data>
+            <data key="Inhibited">1</data>
+            <data key="Entropy unweighted">1</data>
+            <data key="Activated">3</data>
+            <data key="Entropy weighted">0.828540310201</data>
+            <data key="Inhibits">1</data>
+            <data key="Eccentricity in">2</data>
+        </node>
+        <node id="68">
+            <data key="SUID">68</data>
+            <data key="shared name">Dominant.Negative</data>
+            <data key="name">Dominant.Negative</data>
+            <data key="selected">false</data>
+            <data key="In degree">4</data>
+            <data key="Eccentricity out">3</data>
+            <data key="Closeness centrality out weighted">23.413797574</data>
+            <data key="Betweenness weighted">0</data>
+            <data key="weight">0.5</data>
+            <data key="Betweenness unweighted">6.53333333075</data>
+            <data key="Total degree">8</data>
+            <data key="Closeness centrality in unweighted">0.578947368421</data>
+            <data key="Local clustering coefficient unweighted">0.107142857143</data>
+            <data key="Local clustering coefficient weighted">0.35822418262</data>
+            <data key="Activates">4</data>
+            <data key="Closeness centrality in weighted">23.413797574</data>
+            <data key="Out degree">4</data>
+            <data key="Closeness centrality out unweighted">0.578947368421</data>
+            <data key="Inhibited">0</data>
+            <data key="Entropy unweighted">1</data>
+            <data key="Activated">4</data>
+            <data key="Entropy weighted">0.727312422193</data>
+            <data key="Inhibits">0</data>
+            <data key="Eccentricity in">3</data>
+        </node>
+        <node id="67">
+            <data key="SUID">67</data>
+            <data key="shared name">Disease</data>
+            <data key="name">Disease</data>
+            <data key="selected">false</data>
+            <data key="In degree">5</data>
+            <data key="Eccentricity out">3</data>
+            <data key="Closeness centrality out weighted">28.6376162512</data>
+            <data key="Betweenness weighted">42</data>
+            <data key="weight">0.5</data>
+            <data key="Betweenness unweighted">9.1666666635</data>
+            <data key="Total degree">10</data>
+            <data key="Closeness centrality in unweighted">0.578947368421</data>
+            <data key="Local clustering coefficient unweighted">0.0888888888889</data>
+            <data key="Local clustering coefficient weighted">0.244830458201</data>
+            <data key="Activates">5</data>
+            <data key="Closeness centrality in weighted">28.6376162512</data>
+            <data key="Out degree">5</data>
+            <data key="Closeness centrality out unweighted">0.578947368421</data>
+            <data key="Inhibited">0</data>
+            <data key="Entropy unweighted">1</data>
+            <data key="Activated">5</data>
+            <data key="Entropy weighted">0.889389633728</data>
+            <data key="Inhibits">0</data>
+            <data key="Eccentricity in">3</data>
+        </node>
+        <node id="66">
+            <data key="SUID">66</data>
+            <data key="shared name">Complex</data>
+            <data key="name">Complex</data>
+            <data key="selected">false</data>
+            <data key="In degree">5</data>
+            <data key="Eccentricity out">2</data>
+            <data key="Closeness centrality out weighted">27.2766082411</data>
+            <data key="Betweenness weighted">34</data>
+            <data key="weight">0.5</data>
+            <data key="Betweenness unweighted">33.0499999965</data>
+            <data key="Total degree">11</data>
+            <data key="Closeness centrality in unweighted">0.647058823529</data>
+            <data key="Local clustering coefficient unweighted">0.0363636363636</data>
+            <data key="Local clustering coefficient weighted">0.161220300274</data>
+            <data key="Activates">4</data>
+            <data key="Closeness centrality in weighted">27.2145734689</data>
+            <data key="Out degree">6</data>
+            <data key="Closeness centrality out unweighted">0.6875</data>
+            <data key="Inhibited">2</data>
+            <data key="Entropy unweighted">1</data>
+            <data key="Activated">3</data>
+            <data key="Entropy weighted">0.733437861426</data>
+            <data key="Inhibits">2</data>
+            <data key="Eccentricity in">2</data>
+        </node>
+        <node id="65">
+            <data key="SUID">65</data>
+            <data key="shared name">Cancer</data>
+            <data key="name">Cancer</data>
+            <data key="selected">false</data>
+            <data key="In degree">6</data>
+            <data key="Eccentricity out">2</data>
+            <data key="Closeness centrality out weighted">29.00416154</data>
+            <data key="Betweenness weighted">36</data>
+            <data key="weight">0.5</data>
+            <data key="Betweenness unweighted">28.7833333278</data>
+            <data key="Total degree">12</data>
+            <data key="Closeness centrality in unweighted">0.6875</data>
+            <data key="Local clustering coefficient unweighted">0.0757575757576</data>
+            <data key="Local clustering coefficient weighted">0.276554337534</data>
+            <data key="Activates">5</data>
+            <data key="Closeness centrality in weighted">29.00416154</data>
+            <data key="Out degree">6</data>
+            <data key="Closeness centrality out unweighted">0.6875</data>
+            <data key="Inhibited">1</data>
+            <data key="Entropy unweighted">1</data>
+            <data key="Activated">5</data>
+            <data key="Entropy weighted">0.920264304396</data>
+            <data key="Inhibits">1</data>
+            <data key="Eccentricity in">2</data>
+        </node>
+        <node id="64">
+            <data key="SUID">64</data>
+            <data key="shared name">CNV</data>
+            <data key="name">CNV</data>
+            <data key="selected">false</data>
+            <data key="In degree">2</data>
+            <data key="Eccentricity out">3</data>
+            <data key="Closeness centrality out weighted">23.2208425891</data>
+            <data key="Betweenness weighted">0</data>
+            <data key="weight">0.5</data>
+            <data key="Betweenness unweighted">1.6666666655</data>
+            <data key="Total degree">4</data>
+            <data key="Closeness centrality in unweighted">0.5</data>
+            <data key="Local clustering coefficient unweighted">0</data>
+            <data key="Local clustering coefficient weighted">0</data>
+            <data key="Activates">1</data>
+            <data key="Closeness centrality in weighted">23.2208425891</data>
+            <data key="Out degree">2</data>
+            <data key="Closeness centrality out unweighted">0.5</data>
+            <data key="Inhibited">1</data>
+            <data key="Entropy unweighted">1</data>
+            <data key="Activated">1</data>
+            <data key="Entropy weighted">0.971847356874</data>
+            <data key="Inhibits">1</data>
+            <data key="Eccentricity in">3</data>
+        </node>
+        <node id="63">
+            <data key="SUID">63</data>
+            <data key="shared name">Auto.inhibitory</data>
+            <data key="name">Auto.inhibitory</data>
+            <data key="selected">false</data>
+            <data key="In degree">4</data>
+            <data key="Eccentricity out">3</data>
+            <data key="Closeness centrality out weighted">19.6293462486</data>
+            <data key="Betweenness weighted">0</data>
+            <data key="weight">0.5</data>
+            <data key="Betweenness unweighted">1.45</data>
+            <data key="Total degree">6</data>
+            <data key="Closeness centrality in unweighted">0.611111111111</data>
+            <data key="Local clustering coefficient unweighted">0.2</data>
+            <data key="Local clustering coefficient weighted">0.426276703075</data>
+            <data key="Activates">2</data>
+            <data key="Closeness centrality in weighted">19.6939580923</data>
+            <data key="Out degree">2</data>
+            <data key="Closeness centrality out unweighted">0.478260869565</data>
+            <data key="Inhibited">0</data>
+            <data key="Entropy unweighted">1</data>
+            <data key="Activated">4</data>
+            <data key="Entropy weighted">0.812784446223</data>
+            <data key="Inhibits">0</data>
+            <data key="Eccentricity in">2</data>
+        </node>
+        <node id="62">
+            <data key="SUID">62</data>
+            <data key="shared name">Amphioxus_DISCRET.Ka.Ks</data>
+            <data key="name">Amphioxus_DISCRET.Ka.Ks</data>
+            <data key="selected">false</data>
+            <data key="In degree">2</data>
+            <data key="Eccentricity out">3</data>
+            <data key="Closeness centrality out weighted">27.2145734689</data>
+            <data key="Betweenness weighted">24</data>
+            <data key="weight">0.5</data>
+            <data key="Betweenness unweighted">2.3333333325</data>
+            <data key="Total degree">4</data>
+            <data key="Closeness centrality in unweighted">0.478260869565</data>
+            <data key="Local clustering coefficient unweighted">0</data>
+            <data key="Local clustering coefficient weighted">0</data>
+            <data key="Activates">1</data>
+            <data key="Closeness centrality in weighted">27.2145734689</data>
+            <data key="Out degree">2</data>
+            <data key="Closeness centrality out unweighted">0.5</data>
+            <data key="Inhibited">1</data>
+            <data key="Entropy unweighted">1</data>
+            <data key="Activated">1</data>
+            <data key="Entropy weighted">0.96958599095</data>
+            <data key="Inhibits">1</data>
+            <data key="Eccentricity in">3</data>
+        </node>
+        <edge source="72" target="63">
+            <data key="SUID">88</data>
+            <data key="shared name">Auto.inhibitory--&gt;Ohnolog</data>
+            <data key="shared interaction"/>
+            <data key="name">Auto.inhibitory--&gt;Ohnolog</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">0.0865966392531186</data>
+            <data key="confidence">20.25373</data>
+            <data key="edgeType">2</data>
+            <data key="weight">8.0</data>
+            <data key="complexity">6.10557</data>
+            <data key="upstream">Cancer</data>
+            <data key="nSamples">0</data>
+            <data key="sign">+</data>
+            <data key="targetArrowShape">arrow</data>
+            <data key="sourceArrowShape">none</data>
+        </edge>
+        <edge source="72" target="73">
+            <data key="SUID">81</data>
+            <data key="shared name">SSD---Ohnolog</data>
+            <data key="shared interaction"/>
+            <data key="name">SSD---Ohnolog</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">-0.145792725903232</data>
+            <data key="confidence">73.39255</data>
+            <data key="edgeType">1</data>
+            <data key="weight">8.0</data>
+            <data key="complexity">3.80275</data>
+            <data key="upstream">NA</data>
+            <data key="nSamples">0</data>
+            <data key="sign">-</data>
+        </edge>
+        <edge source="69" target="73">
+            <data key="SUID">93</data>
+            <data key="shared name">SSD---Essential.from.mouse.Knockouts</data>
+            <data key="shared interaction"/>
+            <data key="name">SSD---Essential.from.mouse.Knockouts</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">-0.0747977027094746</data>
+            <data key="confidence">5.23553</data>
+            <data key="edgeType">1</data>
+            <data key="weight">2.094212</data>
+            <data key="complexity">3.20516</data>
+            <data key="upstream">NA</data>
+            <data key="nSamples">0</data>
+            <data key="sign">-</data>
+        </edge>
+        <edge source="69" target="71">
+            <data key="SUID">90</data>
+            <data key="shared name">Haplo.insufficient---Essential.from.mouse.Knockouts</data>
+            <data key="shared interaction"/>
+            <data key="name">Haplo.insufficient---Essential.from.mouse.Knockouts</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">0.116852139381318</data>
+            <data key="confidence">15.89117</data>
+            <data key="edgeType">1</data>
+            <data key="weight">6.356468</data>
+            <data key="complexity">5.38903</data>
+            <data key="upstream">Disease</data>
+            <data key="nSamples">0</data>
+            <data key="sign">+</data>
+        </edge>
+        <edge source="68" target="71">
+            <data key="SUID">86</data>
+            <data key="shared name">Haplo.insufficient---Dominant.Negative</data>
+            <data key="shared interaction"/>
+            <data key="name">Haplo.insufficient---Dominant.Negative</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">0.171660063558759</data>
+            <data key="confidence">30.38074</data>
+            <data key="edgeType">1</data>
+            <data key="weight">8.0</data>
+            <data key="complexity">4.99586</data>
+            <data key="upstream">Disease</data>
+            <data key="nSamples">0</data>
+            <data key="sign">+</data>
+        </edge>
+        <edge source="67" target="69">
+            <data key="SUID">84</data>
+            <data key="shared name">Essential.from.mouse.Knockouts---Disease</data>
+            <data key="shared interaction"/>
+            <data key="name">Essential.from.mouse.Knockouts---Disease</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">0.174718797880921</data>
+            <data key="confidence">41.70276</data>
+            <data key="edgeType">1</data>
+            <data key="weight">8.0</data>
+            <data key="complexity">3.54394</data>
+            <data key="upstream">NA</data>
+            <data key="nSamples">0</data>
+            <data key="sign">+</data>
+        </edge>
+        <edge source="67" target="68">
+            <data key="SUID">76</data>
+            <data key="shared name">Dominant.Negative---Disease</data>
+            <data key="shared interaction"/>
+            <data key="name">Dominant.Negative---Disease</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">0.191475619704491</data>
+            <data key="confidence">116.68847</data>
+            <data key="edgeType">1</data>
+            <data key="weight">8.0</data>
+            <data key="complexity">3.48653</data>
+            <data key="upstream">NA</data>
+            <data key="nSamples">0</data>
+            <data key="sign">+</data>
+        </edge>
+        <edge source="67" target="71">
+            <data key="SUID">75</data>
+            <data key="shared name">Haplo.insufficient---Disease</data>
+            <data key="shared interaction"/>
+            <data key="name">Haplo.insufficient---Disease</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">0.209374151253846</data>
+            <data key="confidence">146.12264</data>
+            <data key="edgeType">1</data>
+            <data key="weight">8.0</data>
+            <data key="complexity">3.41936</data>
+            <data key="upstream">NA</data>
+            <data key="nSamples">0</data>
+            <data key="sign">+</data>
+        </edge>
+        <edge source="66" target="68">
+            <data key="SUID">95</data>
+            <data key="shared name">Dominant.Negative---Complex</data>
+            <data key="shared interaction"/>
+            <data key="name">Dominant.Negative---Complex</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">0.084668766723754</data>
+            <data key="confidence">3.80411</data>
+            <data key="edgeType">1</data>
+            <data key="weight">1.521644</data>
+            <data key="complexity">9.66849</data>
+            <data key="upstream">Essential.from.mouse.Knockouts,Cancer</data>
+            <data key="nSamples">0</data>
+            <data key="sign">+</data>
+        </edge>
+        <edge source="66" target="70">
+            <data key="SUID">92</data>
+            <data key="shared name">Expression.level_DISCRET---Complex</data>
+            <data key="shared interaction"/>
+            <data key="name">Expression.level_DISCRET---Complex</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">-0.0402426411761285</data>
+            <data key="confidence">10.5959</data>
+            <data key="edgeType">1</data>
+            <data key="weight">4.23836</data>
+            <data key="complexity">12.1754</data>
+            <data key="upstream">NA</data>
+            <data key="nSamples">0</data>
+            <data key="sign">-</data>
+        </edge>
+        <edge source="66" target="63">
+            <data key="SUID">89</data>
+            <data key="shared name">Auto.inhibitory--&gt;Complex</data>
+            <data key="shared interaction"/>
+            <data key="name">Auto.inhibitory--&gt;Complex</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">0.0846956641793095</data>
+            <data key="confidence">17.2593</data>
+            <data key="edgeType">2</data>
+            <data key="weight">6.90372</data>
+            <data key="complexity">6.0759</data>
+            <data key="upstream">Cancer</data>
+            <data key="nSamples">0</data>
+            <data key="sign">+</data>
+            <data key="targetArrowShape">arrow</data>
+            <data key="sourceArrowShape">none</data>
+        </edge>
+        <edge source="66" target="69">
+            <data key="SUID">79</data>
+            <data key="shared name">Essential.from.mouse.Knockouts---Complex</data>
+            <data key="shared interaction"/>
+            <data key="name">Essential.from.mouse.Knockouts---Complex</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">0.245409779138355</data>
+            <data key="confidence">86.08134</data>
+            <data key="edgeType">1</data>
+            <data key="weight">8.0</data>
+            <data key="complexity">3.53766</data>
+            <data key="upstream">NA</data>
+            <data key="nSamples">0</data>
+            <data key="sign">+</data>
+        </edge>
+        <edge source="65" target="68">
+            <data key="SUID">91</data>
+            <data key="shared name">Dominant.Negative---Cancer</data>
+            <data key="shared interaction"/>
+            <data key="name">Dominant.Negative---Cancer</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">0.0700938572226788</data>
+            <data key="confidence">10.8664</data>
+            <data key="edgeType">1</data>
+            <data key="weight">4.34656</data>
+            <data key="complexity">10.9812</data>
+            <data key="upstream">Disease,Complex</data>
+            <data key="nSamples">0</data>
+            <data key="sign">+</data>
+        </edge>
+        <edge source="65" target="66">
+            <data key="SUID">87</data>
+            <data key="shared name">Complex---Cancer</data>
+            <data key="shared interaction"/>
+            <data key="name">Complex---Cancer</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">0.0845068617216017</data>
+            <data key="confidence">21.12714</data>
+            <data key="edgeType">1</data>
+            <data key="weight">8.0</data>
+            <data key="complexity">6.20086</data>
+            <data key="upstream">Dominant.Negative</data>
+            <data key="nSamples">0</data>
+            <data key="sign">+</data>
+        </edge>
+        <edge source="65" target="72">
+            <data key="SUID">80</data>
+            <data key="shared name">Ohnolog---Cancer</data>
+            <data key="shared interaction"/>
+            <data key="name">Ohnolog---Cancer</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">0.150688180610222</data>
+            <data key="confidence">75.71323</data>
+            <data key="edgeType">1</data>
+            <data key="weight">8.0</data>
+            <data key="complexity">3.96237</data>
+            <data key="upstream">NA</data>
+            <data key="nSamples">0</data>
+            <data key="sign">+</data>
+        </edge>
+        <edge source="65" target="67">
+            <data key="SUID">78</data>
+            <data key="shared name">Disease---Cancer</data>
+            <data key="shared interaction"/>
+            <data key="name">Disease---Cancer</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">0.16806286867999</data>
+            <data key="confidence">96.12994</data>
+            <data key="edgeType">1</data>
+            <data key="weight">8.0</data>
+            <data key="complexity">3.93806</data>
+            <data key="upstream">NA</data>
+            <data key="nSamples">0</data>
+            <data key="sign">+</data>
+        </edge>
+        <edge source="64" target="65">
+            <data key="SUID">85</data>
+            <data key="shared name">Cancer---CNV</data>
+            <data key="shared interaction"/>
+            <data key="name">Cancer---CNV</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">-0.106145967669284</data>
+            <data key="confidence">35.16725</data>
+            <data key="edgeType">1</data>
+            <data key="weight">8.0</data>
+            <data key="complexity">3.88285</data>
+            <data key="upstream">NA</data>
+            <data key="nSamples">0</data>
+            <data key="sign">-</data>
+        </edge>
+        <edge source="64" target="73">
+            <data key="SUID">82</data>
+            <data key="shared name">SSD---CNV</data>
+            <data key="shared interaction"/>
+            <data key="name">SSD---CNV</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">0.14382190138277</data>
+            <data key="confidence">62.18848</data>
+            <data key="edgeType">1</data>
+            <data key="weight">8.0</data>
+            <data key="complexity">3.72322</data>
+            <data key="upstream">NA</data>
+            <data key="nSamples">0</data>
+            <data key="sign">+</data>
+        </edge>
+        <edge source="63" target="67">
+            <data key="SUID">94</data>
+            <data key="shared name">Disease---Auto.inhibitory</data>
+            <data key="shared interaction"/>
+            <data key="name">Disease---Auto.inhibitory</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">0.0654586261358422</data>
+            <data key="confidence">4.903</data>
+            <data key="edgeType">1</data>
+            <data key="weight">1.9612</data>
+            <data key="complexity">10.7111</data>
+            <data key="upstream">Cancer,Complex</data>
+            <data key="nSamples">0</data>
+            <data key="sign">+</data>
+        </edge>
+        <edge source="63" target="65">
+            <data key="SUID">83</data>
+            <data key="shared name">Cancer---Auto.inhibitory</data>
+            <data key="shared interaction"/>
+            <data key="name">Cancer---Auto.inhibitory</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">0.121424868126469</data>
+            <data key="confidence">55.20911</data>
+            <data key="edgeType">1</data>
+            <data key="weight">8.0</data>
+            <data key="complexity">3.48669</data>
+            <data key="upstream">NA</data>
+            <data key="nSamples">0</data>
+            <data key="sign">+</data>
+        </edge>
+        <edge source="62" target="73">
+            <data key="SUID">77</data>
+            <data key="shared name">SSD---Amphioxus_DISCRET.Ka.Ks</data>
+            <data key="shared interaction"/>
+            <data key="name">SSD---Amphioxus_DISCRET.Ka.Ks</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">0.152096846300623</data>
+            <data key="confidence">111.5791</data>
+            <data key="edgeType">1</data>
+            <data key="weight">8.0</data>
+            <data key="complexity">60.4729</data>
+            <data key="upstream">NA</data>
+            <data key="nSamples">0</data>
+            <data key="sign">+</data>
+        </edge>
+        <edge source="62" target="66">
+            <data key="SUID">74</data>
+            <data key="shared name">Complex---Amphioxus_DISCRET.Ka.Ks</data>
+            <data key="shared interaction"/>
+            <data key="name">Complex---Amphioxus_DISCRET.Ka.Ks</data>
+            <data key="selected">false</data>
+            <data key="interaction"/>
+            <data key="partialCorrelation">-0.189138805958696</data>
+            <data key="confidence">201.9902</data>
+            <data key="edgeType">1</data>
+            <data key="weight">8.0</data>
+            <data key="complexity">64.4268</data>
+            <data key="upstream">NA</data>
+            <data key="nSamples">0</data>
+            <data key="sign">-</data>
+        </edge>
+    </graph>
+</graphml>

@@ -412,8 +412,9 @@ main = function(file, tr, extension)
   #Verifier si graphe oriente ou pas
   symetric = isSymmetric.matrix(gr_Adj)
 
-
+  names = V(graphe)$name
   write(paste("#Weighted Not oriented:\t", is_weighted, symetric), file ="output.txt")
+  write(c("#Node names:", names), sep="\t", file ="output.txt", append = TRUE, ncolumns = (length(names)+1))
   
   #Degrees
   graph_degree = degrees(graphe, symetric, gr_adj = gr_Adj)

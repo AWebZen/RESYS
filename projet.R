@@ -344,41 +344,6 @@ Betweenness=function(List_chemins,dist,n,Sym=TRUE)
 }
 
 
-#Tests varies des fonctions, quelques verifications par igraph
-tests_varies = function()
-{
-  graph1 <- graph(edges = c(4,7,4,8,8,7,7,2,2,8,2,6,6,1,1,3,1,10,10,5,1,11,11,2), n=11, directed=F )
-  gr1_adj <- as.matrix(as_adj(graph1),11,11) #matrice d'adjacence, ligne = entree, colonne = sortie
-  print(rowSums(gr1_adj))
-  print(colSums(gr1_adj))
-  
-  #Verification
-  degrees = degree(graph1) 
-  print(degrees)
-  
-  g2 <- graph( edges=c(1,2, 2,3, 3,1, 1,4, 4,2,2,4, 3,2, 3,4,4,3,5,7,5,6,6,7,5,8), n=10 )
-  gr2_adj <- as.matrix(as_adj(g2)) #matrice d'adjacence, ligne = entree, colonne = sortie
-  print(rowSums(gr2_adj))
-  print(colSums(gr2_adj))
-  
-  print(degree(g2, mode = c("out")))
-  print(degree(g2, mode = c("in")))
-  print(degree(g2))
-  
-  #Verifier si graphe oriente ou pas
-  symetric = isSymmetric.matrix(gr1_adj)
-  
-  degree_gr1 = degrees(graph1, TRUE)
-  #Verification
-  print(clustering_coeff(g2, FALSE))
-  print (transitivity(as.undirected(g2, "collapse"), "local"))
-  
-  S = BFS(gr1_adj,8)
-  traceback_BFS(S[1,], S[2,])
-  Res_all = all_BFS(gr1_adj)
-}
-
-
 #Ecrit dans un fichier le traceback de BFS
 #Prend le traceback et le nom du fichier.
 output_traceback_bfs = function(trace, fichier)
@@ -432,12 +397,23 @@ main = function(file, tr, extension)
   #Input graph
   graphe = read_graph(file, format = extension)
   
-  gr_Adj = as.matrix(as_adj(graphe)) #matrice d'adjacence
+  #Verifier si graphe pondere ou pas
+  if (is.null(E(graphe)$weight))
+  {
+    is_weighted = FALSE
+    gr_Adj = as.matrix(as_adj(graphe)) #matrice d'adjacence
+  }
+  else
+  {
+    is_weighted = TRUE
+    gr_Adj = as.matrix(as_adj(graphe, attr="weight")) #matrice d'adjacence
+  }
   
   #Verifier si graphe oriente ou pas
   symetric = isSymmetric.matrix(gr_Adj)
-  #Verifier si graphe pondere ou pas
-  is_weighted = (length(table(gr_Adj)) > 2)
+
+
+  write(paste("#Weighted Not oriented:\t", is_weighted, symetric), file ="output.txt")
   
   #Degrees
   graph_degree = degrees(graphe, symetric, gr_adj = gr_Adj)
@@ -460,12 +436,26 @@ main = function(file, tr, extension)
     between = Betweenness(sh_path_mais[1], sh_path_mais[2], dim(gr_Adj)[1], symetric)
     
     df = as.data.frame(t(rbind(graph_degree, cl_coef, as.numeric(between))), row.names = paste("Node", 1:dim(gr_Adj)[1]))
-    colnames(df) =c("Degree", "Local_transitivity", "Betweenness")
+    if (! symetric)
+    {
+      colnames(df) =c("Global_degree","Degree_In","Degree_Out", "Local_transitivity", "Betweenness")
+    }
+    else
+    {
+      colnames(df) =c("Degree", "Local_transitivity", "Betweenness")
+    }
   }
   else
   {
     df = as.data.frame(t(rbind(graph_degree, cl_coef)), row.names = paste("Node", 1:dim(gr_Adj)[1]))
-    colnames(df) =c("Degree", "Local_transitivity")
+    if (! symetric)
+    {
+      colnames(df) =c("Global degree","Degree In","Degree Out", "Local_transitivity")
+    }
+    else
+    {
+      colnames(df) =c("Degree", "Local_transitivity")
+    }
   }
   #Shortest path via Floyd-Warshall
   sh_path_fw = floyd_warshall(gr_Adj)
@@ -474,28 +464,28 @@ main = function(file, tr, extension)
   
   #Output
   
-  write.table(df, file = "output.txt", quote = FALSE, sep = "\t")
+  write.table(df, file = "output.txt", quote = FALSE, append = TRUE, sep = "\t", col.names = TRUE)
   if (! is_weighted)
   {
     write(c("#BFS Shortest distance matrix"), file ="output.txt", append = TRUE)
     matr = sh_path_bfs[[1]]
     colnames(matr) = paste("Node", 1:dim(gr_Adj)[1])
     rownames(matr) = paste("Node", 1:dim(gr_Adj)[1])
-    write.table(matr,file ="output.txt", append = TRUE, quote = FALSE, sep = "\t")
+    write.table(matr,file ="output.txt", append = TRUE, quote = FALSE, sep = "\t", col.names = TRUE)
     write(paste("#BFS Longest shortest path", longest_sh_path_bfs), sep = "\t", file ="output.txt", append = TRUE)
     
     write(c("#Algo maison Shortest distance matrix"), file ="output.txt", append = TRUE)
     matr = sh_path_mais[[2]]
     colnames(matr) = paste("Node", 1:dim(gr_Adj)[1])
     rownames(matr) = paste("Node", 1:dim(gr_Adj)[1])
-    write.table(matr,file ="output.txt", append = TRUE, quote = FALSE, sep = "\t")
+    write.table(matr,file ="output.txt", append = TRUE, quote = FALSE, sep = "\t", col.names = TRUE)
     write(paste("#Algo maison Longest shortest path", longest_sh_path_mais), sep = "\t", file ="output.txt", append = TRUE)
   }
   write(c("#Floyd-Warshall Shortest distance matrix"), file ="output.txt", append = TRUE)
   matr = sh_path_fw[[1]]
   colnames(matr) = paste("Node", 1:dim(gr_Adj)[1])
   rownames(matr) = paste("Node", 1:dim(gr_Adj)[1])
-  write.table(matr,file ="output.txt", append = TRUE, quote = FALSE, sep = "\t")
+  write.table(matr,file ="output.txt", append = TRUE, quote = FALSE, sep = "\t", col.names = TRUE)
   write(paste("#Floyd-Warshall Longest shortest path", longest_sh_path_fw), sep = "\t", file ="output.txt", append = TRUE)
   if (tr)
   {

@@ -43,6 +43,10 @@ degrees = function(gr, symetric, gr_adj = "")
   {
     gr_adj <- as.matrix(as_adj(gr))
   }
+  if (length(table(gr_adj))>2) #Deponderer la matrice - or, si noeuds sur lui meme (boucle), compte deux fois -> Cas non considere pour les non orientes
+  {
+    gr_adj[gr_adj>1] = 1
+  }
   if (! symetric)
   {
     return(rbind(colSums(gr_adj) + rowSums(gr_adj), colSums(gr_adj), rowSums(gr_adj))) #global, in, out
@@ -413,8 +417,12 @@ main = function(file, tr, extension)
   symetric = isSymmetric.matrix(gr_Adj)
 
   names = V(graphe)$name
+  if (is.null(names))
+  {
+    names=paste("Node",1:length(V(graphe)))
+  }
   write(paste("#Weighted Not oriented:\t", is_weighted, symetric), file ="output.txt")
-  write(c("#Node names:", names), sep="\t", file ="output.txt", append = TRUE, ncolumns = (length(names)+1))
+  write(c("#Node names:", paste(1:length(V(graphe)), ":",names)), sep="\t", file ="output.txt", append = TRUE, ncolumns = (length(names)+1))
   
   #Degrees
   graph_degree = degrees(graphe, symetric, gr_adj = gr_Adj)
@@ -462,9 +470,7 @@ main = function(file, tr, extension)
   sh_path_fw = floyd_warshall(gr_Adj)
   tr_fw = traceback_fw(sh_path_fw[[2]])
   longest_sh_path_fw = longest_shortest_path_fw(sh_path_fw[[1]])
-  
   #Output
-  
   write.table(df, file = "output.txt", quote = FALSE, append = TRUE, sep = "\t", col.names = TRUE)
   if (! is_weighted)
   {

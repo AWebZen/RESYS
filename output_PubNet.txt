@@ -1,0 +1,70 @@
+#Weighted Not oriented:	 TRUE TRUE
+#Node names:	1 : Affeldt S	2 : Arora J	3 : Camonis J	4 : Cascone I	5 : Cayrol B	6 : Dawid A	7 : Evlampiev K	8 : Guo P	9 : Haque F	10 : Heller C	11 : Isambert H	12 : Magnúsdóttir S	13 : Malaguti G	14 : Meller A	15 : Nogues C	16 : Rossi JJ	17 : Sagi I	18 : Selimoglu R	19 : Sella N	20 : Shapiro BA	21 : Shukla GC	22 : Silberzan P	23 : Singh PP	24 : Stein RR	25 : Tenenbaum SA	26 : Tor Y	27 : Toulmé JJ	28 : Uguzzoni G	29 : Verny L	30 : Viasnoff V	31 : Viovy JL	32 : Wilhelmsson LM
+Degree	Local_transitivity
+Node 1	9	0.555555555555556
+Node 2	2	1
+Node 3	5	1
+Node 4	5	1
+Node 5	5	1
+Node 6	5	1
+Node 7	1	NA
+Node 8	9	1
+Node 9	9	1
+Node 10	3	1
+Node 11	31	0.152688172043011
+Node 12	3	1
+Node 13	3	1
+Node 14	2	1
+Node 15	5	1
+Node 16	9	1
+Node 17	5	1
+Node 18	5	1
+Node 19	5	0.9
+Node 20	9	1
+Node 21	9	1
+Node 22	5	1
+Node 23	9	0.5
+Node 24	1	NA
+Node 25	9	1
+Node 26	9	1
+Node 27	9	1
+Node 28	4	1
+Node 29	5	0.9
+Node 30	2	1
+Node 31	3	1
+Node 32	9	1
+#Floyd-Warshall Shortest distance matrix
+Node 1	Node 2	Node 3	Node 4	Node 5	Node 6	Node 7	Node 8	Node 9	Node 10	Node 11	Node 12	Node 13	Node 14	Node 15	Node 16	Node 17	Node 18	Node 19	Node 20	Node 21	Node 22	Node 23	Node 24	Node 25	Node 26	Node 27	Node 28	Node 29	Node 30	Node 31	Node 32
+Node 1	0	3	2	2	4	4	4	3	3	3	2	3	1	3	3	3	3	2	2	3	3	3	3	3	3	3	3	1	2	3	3	3
+Node 2	3	0	3	3	3	3	3	2	2	2	1	2	3	2	2	2	2	3	2	2	2	2	1	2	2	2	2	2	2	2	2	2
+Node 3	2	3	0	2	4	4	4	3	3	3	2	3	3	3	3	3	3	2	3	3	3	3	2	3	3	3	3	3	3	3	3	3
+Node 4	2	3	2	0	4	4	4	3	3	3	2	3	3	3	3	3	3	2	3	3	3	3	2	3	3	3	3	3	3	3	3	3
+Node 5	4	3	4	4	0	2	4	3	3	3	2	3	4	3	1	3	1	4	4	3	3	1	4	3	3	3	3	3	4	3	3	3
+Node 6	4	3	4	4	2	0	4	3	3	3	2	3	4	3	1	3	1	4	4	3	3	1	4	3	3	3	3	3	4	3	3	3
+Node 7	4	3	4	4	4	4	0	3	3	3	2	3	4	3	3	3	3	4	4	3	3	3	4	3	3	3	3	3	4	3	3	3
+Node 8	3	2	3	3	3	3	3	0	1	2	1	2	3	2	2	1	2	3	3	1	1	2	3	2	1	1	1	2	3	2	2	1
+Node 9	3	2	3	3	3	3	3	1	0	2	1	2	3	2	2	1	2	3	3	1	1	2	3	2	1	1	1	2	3	2	2	1
+Node 10	3	2	3	3	3	3	3	2	2	0	1	1	3	2	2	2	2	3	3	2	2	2	3	2	2	2	2	2	3	2	1	2
+Node 11	2	1	2	2	2	2	2	1	1	1	0	1	2	1	1	1	1	2	2	1	1	1	2	1	1	1	1	1	2	1	1	1
+Node 12	3	2	3	3	3	3	3	2	2	1	1	0	3	2	2	2	2	3	3	2	2	2	3	2	2	2	2	2	3	2	1	2
+Node 13	1	3	3	3	4	4	4	3	3	3	2	3	0	3	3	3	3	3	3	3	3	3	2	3	3	3	3	2	3	3	3	3
+Node 14	3	2	3	3	3	3	3	2	2	2	1	2	3	0	2	2	2	3	3	2	2	2	3	2	2	2	2	2	3	1	2	2
+Node 15	3	2	3	3	1	1	3	2	2	2	1	2	3	2	0	2	1	3	3	2	2	1	3	2	2	2	2	2	3	2	2	2
+Node 16	3	2	3	3	3	3	3	1	1	2	1	2	3	2	2	0	2	3	3	1	1	2	3	2	1	1	1	2	3	2	2	1
+Node 17	3	2	3	3	1	1	3	2	2	2	1	2	3	2	1	2	0	3	3	2	2	1	3	2	2	2	2	2	3	2	2	2
+Node 18	2	3	2	2	4	4	4	3	3	3	2	3	3	3	3	3	3	0	3	3	3	3	2	3	3	3	3	3	3	3	3	3
+Node 19	2	2	3	3	4	4	4	3	3	3	2	3	3	3	3	3	3	3	0	3	3	3	1	3	3	3	3	1	2	3	3	3
+Node 20	3	2	3	3	3	3	3	1	1	2	1	2	3	2	2	1	2	3	3	0	1	2	3	2	1	1	1	2	3	2	2	1
+Node 21	3	2	3	3	3	3	3	1	1	2	1	2	3	2	2	1	2	3	3	1	0	2	3	2	1	1	1	2	3	2	2	1
+Node 22	3	2	3	3	1	1	3	2	2	2	1	2	3	2	1	2	1	3	3	2	2	0	3	2	2	2	2	2	3	2	2	2
+Node 23	3	1	2	2	4	4	4	3	3	3	2	3	2	3	3	3	3	2	1	3	3	3	0	3	3	3	3	2	1	3	3	3
+Node 24	3	2	3	3	3	3	3	2	2	2	1	2	3	2	2	2	2	3	3	2	2	2	3	0	2	2	2	2	3	2	2	2
+Node 25	3	2	3	3	3	3	3	1	1	2	1	2	3	2	2	1	2	3	3	1	1	2	3	2	0	1	1	2	3	2	2	1
+Node 26	3	2	3	3	3	3	3	1	1	2	1	2	3	2	2	1	2	3	3	1	1	2	3	2	1	0	1	2	3	2	2	1
+Node 27	3	2	3	3	3	3	3	1	1	2	1	2	3	2	2	1	2	3	3	1	1	2	3	2	1	1	0	2	3	2	2	1
+Node 28	1	2	3	3	3	3	3	2	2	2	1	2	2	2	2	2	2	3	1	2	2	2	2	2	2	2	2	0	1	2	2	2
+Node 29	2	2	3	3	4	4	4	3	3	3	2	3	3	3	3	3	3	3	2	3	3	3	1	3	3	3	3	1	0	3	3	3
+Node 30	3	2	3	3	3	3	3	2	2	2	1	2	3	1	2	2	2	3	3	2	2	2	3	2	2	2	2	2	3	0	2	2
+Node 31	3	2	3	3	3	3	3	2	2	1	1	1	3	2	2	2	2	3	3	2	2	2	3	2	2	2	2	2	3	2	0	2
+Node 32	3	2	3	3	3	3	3	1	1	2	1	2	3	2	2	1	2	3	3	1	1	2	3	2	1	1	1	2	3	2	2	0
+#Floyd-Warshall Longest shortest path 4

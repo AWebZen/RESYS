@@ -181,7 +181,6 @@ floyd_warshall = function(gr_adj)
   Next = t(matrix(1:V, V, V))
   Next[gr_adj == 0] = NA
   Next[gr_adj == Inf] = NA
-  # Compt = matrix(0,V,V)
   for(k in 1:V) #noeud intermediaire obligatoire
   {
     for(i in 1:V) #source

@@ -174,7 +174,6 @@ longest_shortest_path_BFS = function(distance_all)
 #Prend une matrice d'adjacence
 floyd_warshall = function(gr_adj)
 {
-  gr2_adj = gr_adj
   V = dim(gr_adj)[1]
   gr_adj[gr_adj == 0] = Inf
   diag(gr_adj) = 0

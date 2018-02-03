@@ -1,0 +1,13 @@
+,Node 1,Node 2,Node 3,Node 4,Node 5,Node 6,Node 7,Node 8,Node 9,Node 10,Node 11,Node 12
+Node 1,0,Inf,Inf,Inf,Inf,Inf,Inf,Inf,Inf,Inf,Inf,Inf
+Node 2,8,0,17.9612,28.23836,17.9612,17.9612,9.9612,24,16,Inf,8,Inf
+Node 3,Inf,Inf,0,Inf,Inf,Inf,Inf,Inf,Inf,Inf,Inf,Inf
+Node 4,Inf,Inf,Inf,0,Inf,Inf,Inf,Inf,Inf,Inf,Inf,Inf
+Node 5,2.094212,Inf,6.356468,Inf,0,Inf,Inf,Inf,Inf,Inf,Inf,Inf
+Node 6,Inf,Inf,8,Inf,Inf,0,Inf,Inf,Inf,Inf,Inf,Inf
+Node 7,10.094212,Inf,8,Inf,8,8,0,Inf,Inf,Inf,Inf,Inf
+Node 8,10.094212,22.90372,9.521644,4.23836,8,1.521644,8.86492,0,14.90372,Inf,6.90372,Inf
+Node 9,16,8,12.34656,12.23836,16,4.34656,8,8,0,Inf,14.90372,Inf
+Node 10,8,16,20.34656,20.23836,24,12.34656,16,16,8,0,22.90372,Inf
+Node 11,12.055412,16,9.9612,20.23836,9.9612,9.9612,1.9612,16,8,Inf,0,Inf
+Node 12,8,30.90372,17.521644,12.23836,16,9.521644,16.86492,8,22.90372,Inf,14.90372,0

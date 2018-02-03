@@ -1,0 +1,16 @@
+#Weighted :  TRUE 	Oriented :  TRUE
+#Node names:	1 : SSD	2 : Ohnolog	3 : Haplo.insufficient	4 : Expression.level_DISCRET	5 : Essential.from.mouse.Knockouts	6 : Dominant.Negative	7 : Disease	8 : Complex	9 : Cancer	10 : CNV	11 : Auto.inhibitory	12 : Amphioxus_DISCRET.Ka.Ks
+        Global degree Degree In Degree Out Local_transitivity
+Node 1              4         4          0          0.0000000
+Node 2              3         1          2          0.3333333
+Node 3              3         3          0          0.6666667
+Node 4              1         1          0                NaN
+Node 5              4         2          2          0.1666667
+Node 6              4         3          1          0.5000000
+Node 7              5         2          3          0.4000000
+Node 8              6         2          4          0.1333333
+Node 9              6         2          4          0.3333333
+Node 10             2         0          2          0.0000000
+Node 11             4         2          2          0.5000000
+Node 12             2         0          2          0.0000000
+#Floyd-Warshall Longest shortest path 30.90372

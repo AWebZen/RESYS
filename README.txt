@@ -25,7 +25,7 @@ Rscript --vanilla projet.R -f <network-file> -e <format> [-t]
 - -f/--file : suivi du nom du fichier du réseau, obligatoire.
 - -e/--extension : suivi du format du fichier du réseau, au choix parmis : "pajek", "ncol", "lgl", "edgelist", "graphml",
               "dimacs", "graphdb", "gml", "dl". Obligatoire.
-- -t/--traceback : si l'option est présente, le programme fera un troisième output avec les plus courts chemins par paires de points
+- -t/--traceback : si l'option est présente, le programme fera un output supplémentaire avec les plus courts chemins par paires de points
 
 #Input:
 - fichier du réseau, au format "pajek", "ncol", "lgl", "graphml",
@@ -33,8 +33,11 @@ Rscript --vanilla projet.R -f <network-file> -e <format> [-t]
 
 #Output:
 - fichier output.txt : différentes mesures du graphe
+- pour chaque mesure de distance que l'on puisse appliquer au graphe, un fichier csv de la matrice des distances les plus courtes par paire de point. Minimum 1 fichier (output_FW.csv), maximum 3 (output_AM.csv,	output_BFS.csv, output_FW.csv)
 - image degree_distribution.png : graphique avec la distribution des degrés
-- avec l'option -t, output_traceback.txt : fichier avec les plus courts chemins trouvés par une voire les 3 méthodes de calcul
+- avec l'option -t, output_traceback.txt : fichier avec les plus courts chemins trouvés par une voire les 3 méthodes de calcul de distance
 
-#Exemple de commande :
+#Exemples de commande :
 Rscript --vanilla projet.R -f Graph.graphml -e graphml -t
+Rscript --vanilla projet.R -f karate.net -e pajek -t
+Rscript --vanilla projet.R -f PubNet.graphml -e graphml -t

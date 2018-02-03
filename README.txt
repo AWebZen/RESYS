@@ -16,7 +16,7 @@ Codé en R version 3.4.3
 - optparse
 
 #But:
-Outil qui donne différentes mesures d'un réseau donné en entrée.
+Outil qui donne différentes mesures d'un réseau donné en entrée. Dépend de igraph pour la manipulation des graphes, les mesures étant programmées par nous.
 
 #Ligne de commande sur le terminal:
 Rscript --vanilla projet.R -f <network-file> -e <format> [-t]

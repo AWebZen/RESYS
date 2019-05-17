@@ -1,21 +1,11 @@
 # RESYS
-Projet
+
+Projet scolaire sur des propriétés structurales de réseau.
 
 
-Viré ça du debut du code:
-```
-#Sys.setenv(https_proxy="https://proxy:3128")
 
-##METHODES
-#Miic
-#Pc -> pcalg
-#Aracne -> minet
-#Bayesian -> bnlearn
 
-##Installation minet
-#source("https:/bioconductor.org/biocLite.R")
-#biocLite("minet")
-```
+---------------------------
 #http://www.dil.univ-mrs.fr/~tichit/rb/tp1/igraph_tutorial.html
 
 g1 <- read.graph("http://www.dil.univ-mrs.fr/~tichit/rb/tp1/depts.txt", format="edgelist")
